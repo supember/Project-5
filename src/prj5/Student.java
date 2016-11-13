@@ -49,7 +49,7 @@ public class Student
      * Returns the responses of the Student.
      * @return responses of the Student
      */
-    public Boolean getResponses()
+    public SinglyLinkedList<Boolean> getResponses()
     {
         return responses;
     }
