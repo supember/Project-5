@@ -42,7 +42,7 @@ public class Student
      * Returns the region of the Student. 
      * @return region of the Student
      */
-    public RegionEnum getregion()
+    public RegionEnum getRegion()
     {
         return region;
     }
