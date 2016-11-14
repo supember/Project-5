@@ -2,9 +2,9 @@ package prj5;
 
 public class Student
 {
-    private String major;
-    private String hobby;
-    private String region;
+    private MajorEnum major;
+    private HobbyEnum hobby;
+    private RegionEnum region;
     private SinglyLinkedList<Boolean> responses;
     /**
      * Creates a new Student object.
@@ -14,7 +14,8 @@ public class Student
      * @param region of the Student
      * @param responses of the Student
      */
-    public Student(String major, String hobby, String region, SinglyLinkedList<Boolean> responses)
+    public Student(MajorEnum major, HobbyEnum hobby, RegionEnum region,
+    		SinglyLinkedList<Boolean> responses)
     {
         this.major = major;
         this.hobby = hobby;
@@ -25,7 +26,7 @@ public class Student
      * Returns the major of the Student.
      * @return major of the Student
      */
-    public String getMajor()
+    public MajorEnum getMajor()
     {
         return major;
     }
@@ -33,7 +34,7 @@ public class Student
      * Returns the hobby of the Student.
      * @return hobby of the Student
      */
-    public String getHobby()
+    public HobbyEnum getHobby()
     {
         return hobby;
     }
@@ -41,7 +42,7 @@ public class Student
      * Returns the region of the Student. 
      * @return region of the Student
      */
-    public String getregion()
+    public RegionEnum getregion()
     {
         return region;
     }
@@ -52,5 +53,21 @@ public class Student
     public SinglyLinkedList<Boolean> getResponses()
     {
         return responses;
+    }
+    /**
+     * Returns the two Booleans indicating whether or not a student heard and
+     * liked a Song of a certain ID.
+     * @param songID ID of song to return from list of responses
+     * @return a Boolean array of {heard, liked}, representing whether the
+     *         Student heard and/or liked the song.
+     */
+    public Boolean[] getHeardLiked(int songID)
+    {
+        Boolean heard;
+        Boolean liked;
+        heard = responses.get(songID * 2);
+        liked = responses.get((songID * 2) + 1);
+        Boolean[] heardLiked = {heard, liked};
+        return heardLiked;
     }
 }
