@@ -1,9 +1,11 @@
 package prj5;
-
+/**
+ * Represents a song and several of its attributes.
+ * @author Liam Reilly lhreilly
+ * @version 2016.11.11
+ */
 public class Song
 {
-    private static int seed = 0;
-    private int id;
     private int year;
     private String title;
     private String artist;
@@ -21,7 +23,6 @@ public class Song
         this.artist = artist;
         this.year = year;
         this.genre = genre;
-        id = seed++;
     }
     /**
      * Returns the artist of this Song.
@@ -56,14 +57,6 @@ public class Song
         return year;
     }
     /**
-     * Returns the ID number of this Song. Used to help with reordering Songs.
-     * @return ID of this Song
-     */
-    public int getID()
-    {
-        return id;
-    }
-    /**
      * Tells whether an object is equal to this Song object. Returns true if
      * the title, artist, year, and genre match, false if otherwise.
      * @param obj to be compared to this Song object
@@ -88,5 +81,17 @@ public class Song
                 genre.equals(other.getGenre());
         }
         return false;
+    }
+    /**
+     * Returns a String representation of this Song object. Follows the format:
+     * "Title" - Artist (Year) : Genre
+     * @return a String representation of this Song
+     */
+    @Override
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder("\"" + title + "\" - ");
+        sb.append(artist + " (" + year + ") : " + genre);
+        return sb.toString(); 
     }
 }
