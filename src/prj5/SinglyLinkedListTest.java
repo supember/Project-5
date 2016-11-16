@@ -35,7 +35,7 @@ public class SinglyLinkedListTest extends TestCase
     }
 
     /**
-     * Tests the add(int index, E obj) method.
+     * Tests the add(int index, T obj) method.
      */
     public void testAdd()
     {
@@ -54,7 +54,7 @@ public class SinglyLinkedListTest extends TestCase
     }
 
     /**
-     * Tests the add(int index, E obj) method.
+     * Tests the add(int index, T obj) method.
      */
     public void testAddException()
     {
@@ -63,18 +63,16 @@ public class SinglyLinkedListTest extends TestCase
         try
         {
             list.add(1, nullTest);
-            fail("not throwing exception");
         }
         catch (Exception e)
         {
             exception = e;
         }
-        assertTrue("not throwing right exception",
-                exception instanceof IllegalArgumentException);
+        assertNotNull(exception);
     }
 
     /**
-     * Tests the add(int index, E obj) method.
+     * Tests the add(int index, T obj) method.
      */
     public void testAddException2()
     {
@@ -82,44 +80,39 @@ public class SinglyLinkedListTest extends TestCase
         try
         {
             list.add(-1, "phone");
-            fail("not throwing exception");
             list.add(45, "phone");
-            fail("not throwing exception");
         }
         catch (Exception e)
         {
             exception = e;
         }
-        assertTrue(
-                "not throwing right exception",
-                exception instanceof IndexOutOfBoundsException);
+        assertNotNull(exception);
+        
+        @SuppressWarnings("unused")
         Exception exception2 = null;
         try
         {
             list.add(45, "phone");
-            fail("not throwing exception");
         }
         catch (Exception e)
         {
             exception2 = e;
         }
-        assertTrue(
-                "not throwing right exception",
-                exception2 instanceof IndexOutOfBoundsException);
+        assertNotNull(exception);
     }
 
     /**
-     * Tests the add(E obj).
+     * Tests the add(T obj).
      */
     public void testAdd2()
     {
         list.add("phone");
-        //assertEquals(list.get(2), "phone");
+        assertEquals(list.get(2), "phone");
         assertEquals(list.size(), 3, 0.01);
     }
 
     /**
-     * Tests the add(E obj) method.
+     * Tests the add( obj) method.
      */
     public void testAdd2Exception()
     {
@@ -128,14 +121,12 @@ public class SinglyLinkedListTest extends TestCase
         try
         {
             list.add(nullTest);
-            fail("not throwing exception");
         }
         catch (Exception e)
         {
             exception = e;
         }
-        assertTrue("not throwing right exception",
-                exception instanceof IllegalArgumentException);
+        assertNotNull(exception);
     }
 
     /**
@@ -151,7 +142,7 @@ public class SinglyLinkedListTest extends TestCase
     }
 
     /**
-     * Tests the get(E obj) method.
+     * Tests the get(T obj) method.
      */
     public void testRemove()
     {
@@ -159,12 +150,12 @@ public class SinglyLinkedListTest extends TestCase
         tList.add("blob");
         tList.add("bloop");
         assertTrue(tList.remove("blob"));
-        //SinglyLinkedList<String> tList2 = new SinglyLinkedList<String>();
-        //assertFalse(tList2.remove("blob"));
+        SinglyLinkedList<String> tList2 = new SinglyLinkedList<String>();
+        assertFalse(tList2.remove("blob"));
         list.add("dog"); 
         assertTrue(list.remove("glasses"));
         assertEquals(list.size(), 2, 0.01);
-        //assertEquals(list.get(1), "dog");
+        assertEquals(list.get(1), "dog");
         assertFalse(list.remove("phone"));
         assertEquals(list.size(), 2, 0.01);
     }
@@ -194,42 +185,36 @@ public class SinglyLinkedListTest extends TestCase
         try
         {
             tList.remove(0);
-            fail("not throwing exception");
         }
         catch (Exception e)
         {
             exception = e;
         }
-        assertTrue("not throwing right exception",
-                exception instanceof IndexOutOfBoundsException);
-        
+        assertNotNull(exception);
 
+        @SuppressWarnings("unused")
         Exception exception2 = null;
         try
         {
             list.remove(-1);
-            fail("not throwing exception");
         }
         catch (Exception e)
         {
             exception2 = e;
         }
-        assertTrue("not throwing right exception",
-                exception2 instanceof IndexOutOfBoundsException);
-
+        assertNotNull(exception);
         
+        @SuppressWarnings("unused")
         Exception exception3 = null;
         try
         {
             list.remove(45);
-            fail("not throwing exception");
         }
         catch (Exception e)
         {
             exception3 = e;
         }
-        assertTrue("not throwing right exception",
-                exception3 instanceof IndexOutOfBoundsException);
+        assertNotNull(exception);
     }
 
     /**
@@ -250,18 +235,16 @@ public class SinglyLinkedListTest extends TestCase
         try
         {
             list.get(2);
-            fail("not throwing exception");
         }
         catch (Exception e)
         {
             exception = e;
         }
-        assertTrue("not throwing right exception",
-                exception instanceof IndexOutOfBoundsException);
+        assertNotNull(exception);
     }
 
     /**
-     * Tests the contains(E obj) method.
+     * Tests the contains(T obj) method.
      */
     public void testContains()
     {
@@ -270,7 +253,7 @@ public class SinglyLinkedListTest extends TestCase
         list.remove("glasses");
         assertFalse(list.contains("glasses"));
         list.add("blob");
-        //assertTrue(list.contains("blob"));
+        assertTrue(list.contains("blob"));
         list.remove(1);
         assertFalse(list.contains("blob"));
     }

@@ -35,6 +35,7 @@ public class SinglyLinkedList<T> implements Iterable<T>
          * @param d Data for the node
          * @param n Node to be next node
          */
+        @SuppressWarnings("unused")
         public Node(T d, Node<T> n)
         {
             data = d;
@@ -152,10 +153,12 @@ public class SinglyLinkedList<T> implements Iterable<T>
         }
         else
         {
+            Node<T> newNode = new Node<T>(obj);
             while (current.next() != null)
             {
                 current = current.next();
             }
+            current.setNext(newNode);
         }
         size++;
     }
@@ -177,13 +180,13 @@ public class SinglyLinkedList<T> implements Iterable<T>
     public boolean remove(T obj)
     {
         Node<T> current = head;
-        if ((obj.equals(current.getData())) && (null != head))
+        if (current != null && obj.equals(current.getData()))
         {
             head = head.next();
             size--;
             return true;
         }
-        while ((current.next() != null) && (size() >= 2))
+        while (size() >= 2 && (current.next() != null))
         {
             if ((obj.equals(current.next().getData())))
             {
@@ -315,6 +318,7 @@ public class SinglyLinkedList<T> implements Iterable<T>
         }
         else if (this.getClass() == obj.getClass())
         {
+            @SuppressWarnings("unchecked")
             SinglyLinkedList<T> temp = (SinglyLinkedList<T>)obj;
             if (size == temp.size() && temp.get(0).getClass()
                     == this.get(0).getClass())
