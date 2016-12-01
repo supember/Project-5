@@ -29,17 +29,17 @@ public class GUIWindow
     private Button sortTitle;
     private Button sortYear;
     private Button sortGenre;
-    private Shape hobbyLegend;
-    private Shape majorLegend;
-    private Shape regionLegend;
-    //private Glyph glyph;
+    
+    private Glyph glyph;
+    private int first;
+    private int last;
     
     /**
      * Creates a new GUIWindow object.
      */
     public GUIWindow()
     {
-        window = new Window("lhrreilly hgong kaliang");
+        window = new Window("Project 5: lhrreilly hgong kaliang");
         
         quit = new Button("Quit");
         quit.onClick(this, "clickedQuit");
@@ -77,74 +77,11 @@ public class GUIWindow
         window.addButton(sortGenre, WindowSide.NORTH);
         window.addButton(next, WindowSide.NORTH);
         
-        //Temp Default Legend for Intermediate Submission
-        Shape border = new Shape(610, 103, 110, 147);
-        border.setForegroundColor(Color.BLACK);
-        border.setBackgroundColor(Color.WHITE);
-        TextShape legend = new TextShape(615, 106, "Hobby Legend", Color.BLACK);
-        legend.setBackgroundColor(Color.WHITE);
+        GUILegend legend = new GUILegend();
         
-        TextShape read = new TextShape(615, 125, "Read", Color.MAGENTA);
-        read.setBackgroundColor(Color.WHITE);
-        TextShape art = new TextShape(615, 140, "Art", Color.BLUE);
-        art.setBackgroundColor(Color.WHITE);
-        TextShape sports = new TextShape(615, 155, "Sports", Color.YELLOW);
-        sports.setBackgroundColor(Color.WHITE);
-        TextShape music = new TextShape(615, 170, "Music", Color.GREEN);
-        music.setBackgroundColor(Color.WHITE);
-        TextShape song = new TextShape(630, 190, "Song Title", Color.BLACK);
-        song.setBackgroundColor(Color.WHITE);
-        
-        
-        Shape divider = new Shape(665, 210, 5, 30);
-        divider.setForegroundColor(Color.BLACK);
-        divider.setBackgroundColor(Color.BLACK);
-        TextShape heard = new TextShape(618, 215, "Heard", Color.BLACK);
-        heard.setBackgroundColor(Color.WHITE);
-        TextShape likes = new TextShape(672, 215, "Likes", Color.BLACK);
-        likes.setBackgroundColor(Color.WHITE);
-        
-        window.addShape(legend);
-        window.addShape(read);
-        window.addShape(art);
-        window.addShape(sports);
-        window.addShape(music);
-        window.addShape(song);
-        window.addShape(divider);
-        window.addShape(heard);
-        window.addShape(likes);
-        window.addShape(border);
-        
-        //Temp Glyph for Intermediate Submission
-        TextShape songtitle = new TextShape(100, 20, "All You Need Is Love", Color.BLACK);
-        songtitle.setBackgroundColor(Color.WHITE);
-        TextShape extra = new TextShape(120, 35, "by the Beatles", Color.BLACK);
-        extra.setBackgroundColor(Color.WHITE);
-        
-        Shape bar = new Shape(165, 55, 7, 60);
-        bar.setForegroundColor(Color.BLACK);
-        bar.setBackgroundColor(Color.BLACK);
-        
-        Shape a = new Shape(90, 55, 150, 15);
-        a.setForegroundColor(Color.MAGENTA);
-        a.setBackgroundColor(Color.MAGENTA);
-        Shape b = new Shape(100, 70, 130, 15);
-        b.setForegroundColor(Color.BLUE);
-        b.setBackgroundColor(Color.BLUE);
-        Shape c = new Shape(80, 85, 165, 15);
-        c.setForegroundColor(Color.YELLOW);
-        c.setBackgroundColor(Color.YELLOW);
-        Shape d = new Shape(115, 100, 100, 15);
-        d.setForegroundColor(Color.GREEN);
-        d.setBackgroundColor(Color.GREEN);
-        
-        window.addShape(songtitle);
-        window.addShape(extra);
-        window.addShape(bar);
-        window.addShape(a);
-        window.addShape(b);
-        window.addShape(c);
-        window.addShape(d);
+        first = 0;
+        last = 9;
+        update();
     }
     
     /**
@@ -165,13 +102,25 @@ public class GUIWindow
         System.exit(0);
     }
     
+    public void update()
+    {
+        //TODO
+        //handles buttons and renders glyphs
+    }
+    
     /**
      * Displays the previous page of glyphs when clicked.
      * @param button    Button pressed to see prev
      */
     public void clickedPrev(Button button)
     {
-        //TODO
+        first = first - 9;
+        last = last - 9;
+        if (first < 0)
+        {
+            first = 0;
+        }
+        update();
     }
     
     /**
@@ -180,7 +129,9 @@ public class GUIWindow
      */
     public void clickedNext(Button button)
     {
-        //TODO
+        first = first + 9;
+        last =  last + 9;
+        update();
     }
     
     /**
@@ -191,7 +142,7 @@ public class GUIWindow
     public void clickedHobby(Button button)
     {
         //TODO
-        window.addShape(hobbyLegend);
+        update();
     }
     
     /**
@@ -202,7 +153,7 @@ public class GUIWindow
     public void clickedMajor(Button button)
     {
         //TODO
-        window.addShape(majorLegend);
+        update();
     }
     
     /**
@@ -213,7 +164,7 @@ public class GUIWindow
     public void clickedRegion(Button button)
     {
         //TODO
-        window.addShape(regionLegend);
+        update();
     }
     
     /**
@@ -223,6 +174,7 @@ public class GUIWindow
     public void sortArtist(String artist)
     {
         //TODO
+        update();
     }
     
     /**
@@ -232,6 +184,7 @@ public class GUIWindow
     public void sortTitle(String title)
     {
         //TODO
+        update();
     }
     
     /**
@@ -241,6 +194,7 @@ public class GUIWindow
     public void sortGenre(String genre)
     {
         //TODO
+        update();
     }
     
     /**
@@ -250,35 +204,63 @@ public class GUIWindow
     public void sortYear(String year)
     {
         //TODO
+        update();
     }
     
     /**
-     * Creates the displayed legend for when "Represent
-     * Hobby" is clicked.
-     * @return Legend for hobbies
+     * Helper class that creates the legend.
      */
-//    private Shape hobbyLegend()
-//    {
-//        //TODO
-//    }
-//    
-//    /**
-//     * Creates the displayed legend for when "Represent
-//     * Major" is clicked.
-//     * @return Legend for majors
-//     */
-//    private Shape majorLegend()
-//    {
-//        //TODO
-//    }
-//    
-//    /**
-//     * Creates the displayed legend for when "Represent
-//     * Region" is clicked.
-//     * @return Legend for regions
-//     */
-//    private Shape regionLegend()
-//    {
-//        //TODO
-//    }
+    private class GUILegend
+    {
+        private Shape border;
+        private TextShape legend;
+        private TextShape group1;
+        private TextShape group2;
+        private TextShape group3;
+        private TextShape group4;
+        private TextShape song;
+        private Shape divider;
+        private TextShape heard;
+        private TextShape likes;
+        
+        private GUILegend()
+        {
+            border = new Shape(610, 103, 110, 147);
+            border.setForegroundColor(Color.BLACK);
+            border.setBackgroundColor(Color.WHITE);
+            legend = new TextShape(615, 106, "Hobby Legend", Color.BLACK);
+            legend.setBackgroundColor(Color.WHITE);
+            
+            group1 = new TextShape(615, 125, "Read", Color.MAGENTA);
+            group1.setBackgroundColor(Color.WHITE);
+            group2 = new TextShape(615, 140, "Art", Color.BLUE);
+            group2.setBackgroundColor(Color.WHITE);
+            group3 = new TextShape(615, 155, "Sports", Color.YELLOW);
+            group3.setBackgroundColor(Color.WHITE);
+            group4 = new TextShape(615, 170, "Music", Color.GREEN);
+            group4.setBackgroundColor(Color.WHITE);
+            song = new TextShape(630, 190, "Song Title", Color.BLACK);
+            song.setBackgroundColor(Color.WHITE);
+            
+            
+            divider = new Shape(665, 210, 5, 30);
+            divider.setForegroundColor(Color.BLACK);
+            divider.setBackgroundColor(Color.BLACK);
+            heard = new TextShape(618, 215, "Heard", Color.BLACK);
+            heard.setBackgroundColor(Color.WHITE);
+            likes = new TextShape(672, 215, "Likes", Color.BLACK);
+            likes.setBackgroundColor(Color.WHITE);
+            
+            window.addShape(legend);
+            window.addShape(group1);
+            window.addShape(group2);
+            window.addShape(group3);
+            window.addShape(group4);
+            window.addShape(song);
+            window.addShape(divider);
+            window.addShape(heard);
+            window.addShape(likes);
+            window.addShape(border);
+        }
+    }
 }
