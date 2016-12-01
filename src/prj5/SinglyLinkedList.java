@@ -29,24 +29,13 @@ public class SinglyLinkedList<T> implements Iterable<T>
         public Node(T d) {
             data = d;
         }
-        
-        /**
-         * Creates a new node object.
-         * @param d Data for the node
-         * @param n Node to be next node
-         */
-        @SuppressWarnings("unused")
-        public Node(T d, Node<T> n)
-        {
-            data = d;
-            next = n;
-        }
 
         /**
          * Sets the next node.
          * @param n Node to be set
          */
-        public void setNext(Node<T> n) {
+        public void setNext(Node<T> n)
+        {
             next = n;
         }
         
@@ -54,7 +43,8 @@ public class SinglyLinkedList<T> implements Iterable<T>
          * Gets the next node.
          * @return  Next node
          */
-        public Node<T> next() {
+        public Node<T> next()
+        {
             return next;
         }
         
@@ -62,7 +52,8 @@ public class SinglyLinkedList<T> implements Iterable<T>
          * Gets the node's data.
          * @return  Data in the node
          */
-        public T getData() {
+        public T getData()
+        {
             return data;
         }
     }
@@ -224,7 +215,7 @@ public class SinglyLinkedList<T> implements Iterable<T>
                 return true;
             }
 
-            while (current.next() != null)
+            while (current.next().next() != null)
             { 
                 if ((currentIndex + 1) == index)
                 {
@@ -236,7 +227,10 @@ public class SinglyLinkedList<T> implements Iterable<T>
                 current = current.next();
                 currentIndex++;
             }
-            return false;
+            Node<T> newNext = current.next().next();
+            current.setNext(newNext);
+            size--;
+            return true;
         }
     }
     
@@ -284,7 +278,6 @@ public class SinglyLinkedList<T> implements Iterable<T>
             }
             current = current.next();
         }
-
         return false;
     }
     
@@ -333,7 +326,6 @@ public class SinglyLinkedList<T> implements Iterable<T>
                 }
                 return same;
             }
-            
         }
         return false;
     }
@@ -384,7 +376,7 @@ public class SinglyLinkedList<T> implements Iterable<T>
          */
         public SLListIterator()
         {
-            nextNode = head.next();
+            nextNode = head;
         }
 
         /**

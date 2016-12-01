@@ -30,7 +30,7 @@ public class GUIWindow
     private Button sortYear;
     private Button sortGenre;
     
-    private Glyph glyph;
+    private GUIGlyph glyph;
     private int first;
     private int last;
     
@@ -79,6 +79,7 @@ public class GUIWindow
         
         GUILegend legend = new GUILegend();
         
+        glyph = new GUIGlyph[9];
         first = 0;
         last = 9;
         update();
@@ -105,7 +106,32 @@ public class GUIWindow
     public void update()
     {
         //TODO
-        //handles buttons and renders glyphs
+        //handles buttons
+        
+        //renders glyphs somehow
+        //SinglyLinkedList<Glyph> page?
+        final int xIncrease = 200;
+        final int yIncrease = 100;
+        final int xStart = 25;
+        int x = xStart;
+        int y = 45;
+        
+        for (int i = 0; i < this.glyph.length; i++)
+        {
+            if (this.glyph[i] != null)
+            {
+                this.glyph[i].destroy();
+            }
+
+            this.glyph[i] = new GUIGlyph(x, y, page.get(i));
+            x += xIncrease;
+            
+            if (x - 3 * xIncrease == xStart)
+            {
+                x = xStart;
+                y += yIncrease;
+            }
+        }
     }
     
     /**
@@ -261,6 +287,86 @@ public class GUIWindow
             window.addShape(heard);
             window.addShape(likes);
             window.addShape(border);
+        }
+    }
+    
+    /**
+     * Helper class that creates a glyph.
+     */
+    private class GUIGlyph
+    {
+        private TextShape title;
+        private TextShape artist;
+        private Shape divider;
+        
+        private Shape heard1;
+        private Shape heard2;
+        private Shape heard3;
+        private Shape heard4;
+        private Shape likes1;
+        private Shape likes2;
+        private Shape likes3;
+        private Shape likes4;
+        private static final int BAR_HEIGHT = 10;
+        private static final int DIVIDER_WIDTH = 4;
+        
+        private GUIGlyph(int x, int y, Glyph song)
+        {
+            int heard1Width = song.getAvgHeard(1) / 2;
+            int heard2Width = song.getAvgHeard(2) / 2;
+            int heard3Width = song.getAvgHeard(3) / 2;
+            int heard4Width = song.getAvgHeard(4) / 2;
+            int likes1Width = song.getAvgLikes(1) / 2;
+            int likes2Width = song.getAvgLikes(2) / 2;
+            int likes3Width = song.getAvgLikes(3) / 2;
+            int likes4Width = song.getAvgLikes(4) / 2;
+
+            divider = new Shape(x + 50, y, DIVIDER_WIDTH,
+                    BAR_HEIGHT * 4, Color.black);
+
+            title = new TextShape(x + 50 - 3 * song.getTitle().length(), y - 40,
+                    song.getTitle());
+            artist = new TextShape(x + 50 - 3 * song.getArtist().length(),
+                    y - 20, song.getArtist());
+
+            title.setBackgroundColor(Color.white);
+            artist.setBackgroundColor(Color.white);
+
+            heard1 = new Shape(x + 50 - heard1Width, y,
+                    heard1Width, BAR_HEIGHT, Color.MAGENTA);
+            heard2 = new Shape(x + 50 - heard2Width,
+                    y + BAR_HEIGHT, heard2Width, BAR_HEIGHT,
+                    Color.BLUE);
+            heard3 = new Shape(x + 50 - heard3Width,
+                    y + 2 * BAR_HEIGHT, heard3Width, BAR_HEIGHT,
+                    Color.YELLOW);
+            heard4 = new Shape(x + 50 - heard4Width,
+                    y + 3 * BAR_HEIGHT, heard4Width, BAR_HEIGHT,
+                    Color.GREEN);
+            
+            likes1 = new Shape(x + 50 + DIVIDER_WIDTH, y,
+                    likes1Width, BAR_HEIGHT, Color.MAGENTA);
+            likes2 = new Shape(x + 50 + DIVIDER_WIDTH,
+                    y + BAR_HEIGHT, likes2Width, BAR_HEIGHT,
+                    Color.BLUE);
+            likes3 = new Shape(x + 50 + DIVIDER_WIDTH,
+                    y + 2 * BAR_HEIGHT, likes3Width, BAR_HEIGHT,
+                    Color.YELLOW);
+            likes4 = new Shape(x + 50 + DIVIDER_WIDTH,
+                    y + 3 * BAR_HEIGHT, likes4Width, BAR_HEIGHT,
+                    Color.GREEN);
+
+            window.addShape(title);
+            window.addShape(artist);
+            window.addShape(divider);
+            window.addShape(heard1);
+            window.addShape(heard2);
+            window.addShape(heard3);
+            window.addShape(heard4);
+            window.addShape(likes1);
+            window.addShape(likes2);
+            window.addShape(likes3);
+            window.addShape(likes4);
         }
     }
 }

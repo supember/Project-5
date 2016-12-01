@@ -71,6 +71,38 @@ public class Glyph
     {
         this.student.add(student);
     }
+    /**
+     * Returns the artist of this Song.
+     * @return artist of this Song
+     */
+    public String getArtist()
+    {
+        return artist;
+    }
+    /**
+     * Returns the title of this Song.
+     * @return title of this Song
+     */
+    public String getTitle()
+    {
+        return title;
+    }
+    /**
+     * Returns the genre of this Song.
+     * @return genre of this Song
+     */
+    public String getGenre()
+    {
+        return genre;
+    }
+    /**
+     * Returns the year of this Song.
+     * @return year of this Song
+     */
+    public int getYear()
+    {
+        return year;
+    }
         
     public void updateRepresent(String represent)
     {
