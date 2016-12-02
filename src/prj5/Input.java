@@ -18,11 +18,13 @@ public class Input
 
     public static void main(String[] args)
     {
-        songFileName = args[1];
-        studentFileName = args[0];
+        songFileName = "SongList.csv";
+        studentFileName = "MusicSurveyData.csv";
         SinglyLinkedList<Song> songs = readSongFile(songFileName);
         SinglyLinkedList<Student> students = readStudentFile(studentFileName);
 
+        GUIWindow window = new GUIWindow(songs, students);
+        
         for (int i = 0; i < songs.size(); i++)
         {
             Song s = songs.get(i);
@@ -259,7 +261,8 @@ public class Input
                 }
             }
             file.close();
-        } catch (FileNotFoundException e)
+        }
+        catch (FileNotFoundException e)
         {
             // e.printStackTrace();
         }
