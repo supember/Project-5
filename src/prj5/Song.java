@@ -1,5 +1,11 @@
 package prj5;
-
+/**
+ * Represents a song and includes methods used to change song data
+ * into information to create a glyph.
+ * 
+ * @author Kali Liang (kaliang)
+ * @version 2016.11.30
+ */
 public class Song
 {
     private String title;
@@ -29,6 +35,14 @@ public class Song
     private SinglyLinkedList<Integer> likesResp;
     private SinglyLinkedList<Student> student;
     
+    /**
+     * Creates a new song object.
+     * 
+     * @param songTitle     Title of the song
+     * @param songArtist    Artist of the song
+     * @param songYear      Year of release of the song
+     * @param songGenre     Genre of the song
+     */
     public Song(String songTitle, String songArtist,
             int songYear, String songGenre)
     {
