@@ -47,6 +47,47 @@ public class Input
             int sportsLiked = 0;
             int musicLiked = 0;
             int artLiked = 0;
+            
+			int totalMathcmdaHeard = 0;
+            int totalCompsciHeard = 0;
+            int totalOtherengHeard = 0;
+            int totalOtherHeard = 0;
+
+            int totalMathcmdaLiked = 0;
+            int totalCompsciLiked = 0;
+            int totalOtherengLiked = 0;
+            int totalOtherLiked = 0;
+
+            int mathcmdaHeard = 0;
+            int compsciHeard = 0;
+            int otherengHeard = 0;
+            int otherHeard = 0;
+
+            int mathcmdaLiked = 0;
+            int compsciLiked = 0;
+            int otherengLiked = 0;
+            int otherLiked = 0;
+            
+			int totalNortheastHeard = 0;
+            int totalSoutheastHeard = 0;
+            int totalOutofususHeard = 0;
+            int totalOutofusHeard = 0;
+
+            int totalNortheastLiked = 0;
+            int totalSoutheastLiked = 0;
+            int totalOutofususLiked = 0;
+            int totalOutofusLiked = 0;
+
+            int northeastHeard = 0;
+            int southeastHeard = 0;
+            int outofususHeard = 0;
+            int outofusHeard = 0;
+
+            int northeastLiked = 0;
+            int southeastLiked = 0;
+            int outofususLiked = 0;
+            int outofusLiked = 0;
+            
             for (Student st : students)
             {
                 if (st.getHobby() == HobbyEnum.READ)
@@ -125,6 +166,158 @@ public class Input
                         totalArtLiked++;
                     }
                 }
+                if (st.getHobby() == MajorEnum.MATHCMDA)
+                {
+                    if (!st.getHeardLiked(i)[0].equals(""))
+                    {
+                        if (st.getHeardLiked(i)[0].equals("Yes"))
+                        {
+                            mathcmdaHeard++;
+                        }
+                        totalMathcmdaHeard++;
+                    }
+                    if (!st.getHeardLiked(i)[1].equals(""))
+                    {
+                        if (st.getHeardLiked(i)[1].equals("Yes"))
+                        {
+                            mathcmdaLiked++;
+                        }
+                        totalMathcmdaLiked++;
+                    }
+                }
+                if (st.getHobby() == MajorEnum.COMPSCI)
+                {
+                    if (!st.getHeardLiked(i)[0].equals(""))
+                    {
+                        if (st.getHeardLiked(i)[0].equals("Yes"))
+                        {
+                            compsciHeard++;
+                        }
+                        totalCompsciHeard++;
+                    }
+                    if (!st.getHeardLiked(i)[1].equals(""))
+                    {
+                        if (st.getHeardLiked(i)[1].equals("Yes"))
+                        {
+                            compsciLiked++;
+                        }
+                        totalCompsciLiked++;
+                    }
+                }
+                if (st.getHobby() == MajorEnum.OTHERENG)
+                {
+                    if (!st.getHeardLiked(i)[0].equals(""))
+                    {
+                        if (st.getHeardLiked(i)[0].equals("Yes"))
+                        {
+                            otherengHeard++;
+                        }
+                        totalOtherengHeard++;
+                    }
+                    if (!st.getHeardLiked(i)[1].equals(""))
+                    {
+                        if (st.getHeardLiked(i)[1].equals("Yes"))
+                        {
+                            otherengLiked++;
+                        }
+                        totalOtherengLiked++;
+                    }
+                }
+                if (st.getHobby() == MajorEnum.OTHER)
+                {
+                    if (!st.getHeardLiked(i)[0].equals(""))
+                    {
+                        if (st.getHeardLiked(i)[0].equals("Yes"))
+                        {
+                            otherHeard++;
+                        }
+                        totalOtherHeard++;
+                    }
+                    if (!st.getHeardLiked(i)[1].equals(""))
+                    {
+                        if (st.getHeardLiked(i)[1].equals("Yes"))
+                        {
+                            otherLiked++;
+                        }
+                        totalOtherLiked++;
+                    }
+                }
+                if (st.getHobby() == RegionEnum.NORTHEAST)
+                {
+                    if (!st.getHeardLiked(i)[0].equals(""))
+                    {
+                        if (st.getHeardLiked(i)[0].equals("Yes"))
+                        {
+                            northeastHeard++;
+                        }
+                        totalNortheastHeard++;
+                    }
+                    if (!st.getHeardLiked(i)[1].equals(""))
+                    {
+                        if (st.getHeardLiked(i)[1].equals("Yes"))
+                        {
+                            northeastLiked++;
+                        }
+                        totalNortheastLiked++;
+                    }
+                }
+                if (st.getHobby() == RegionEnum.SOUTHEAST)
+                {
+                    if (!st.getHeardLiked(i)[0].equals(""))
+                    {
+                        if (st.getHeardLiked(i)[0].equals("Yes"))
+                        {
+                            southeastHeard++;
+                        }
+                        totalSoutheastHeard++;
+                    }
+                    if (!st.getHeardLiked(i)[1].equals(""))
+                    {
+                        if (st.getHeardLiked(i)[1].equals("Yes"))
+                        {
+                            southeastLiked++;
+                        }
+                        totalSoutheastLiked++;
+                    }
+                }
+                if (st.getHobby() == RegionEnum.OUTOFUSUS)
+                {
+                    if (!st.getHeardLiked(i)[0].equals(""))
+                    {
+                        if (st.getHeardLiked(i)[0].equals("Yes"))
+                        {
+                            outofususHeard++;
+                        }
+                        totalOutofususHeard++;
+                    }
+                    if (!st.getHeardLiked(i)[1].equals(""))
+                    {
+                        if (st.getHeardLiked(i)[1].equals("Yes"))
+                        {
+                            outofususLiked++;
+                        }
+                        totalOutofususLiked++;
+                    }
+                }
+                if (st.getHobby() == RegionEnum.OUTOFUS)
+                {
+                    if (!st.getHeardLiked(i)[0].equals(""))
+                    {
+                        if (st.getHeardLiked(i)[0].equals("Yes"))
+                        {
+                            outofusHeard++;
+                        }
+                        totalOutofusHeard++;
+                    }
+                    if (!st.getHeardLiked(i)[1].equals(""))
+                    {
+                        if (st.getHeardLiked(i)[1].equals("Yes"))
+                        {
+                            outofusLiked++;
+                        }
+                        totalOutofusLiked++;
+                    }
+                }
             }
             System.out.println("Song Title: " + s.getTitle());
             System.out.println("Song Artist: " + s.getArtist());
@@ -138,6 +331,20 @@ public class Input
                     + (sportsHeard * 100) / Math.max(1, totalSportsHeard)
                     + " music:"
                     + (musicHeard * 100) / Math.max(1, totalMusicHeard));
+            System.out.println("compsci:"
+                    + (compsciHeard * 100) / Math.max(1, totalCompsciHeard)
+                    + " othereng:" + (otherengHeard * 100) / Math.max(1, totalOtherengHeard)
+                    + " mathcmda:"
+                    + (mathcmdaHeard * 100) / Math.max(1, totalMathcmdaHeard)
+                    + " other:"
+                    + (otherHeard * 100) / Math.max(1, totalOtherHeard));
+            System.out.println("northeast:"
+                    + (northeastHeard * 100) / Math.max(1, totalNortheastHeard)
+                    + " southeast:" + (southeastHeard * 100) / Math.max(1, totalSoutheastHeard)
+                    + " outofusus:"
+                    + (outofususHeard * 100) / Math.max(1, totalOutofususHeard)
+                    + " outofus:"
+                    + (outofusHeard * 100) / Math.max(1, totalOutofusHeard));
             System.out.println("Likes");
             System.out.println("reading:"
                     + (readingLiked * 100) / Math.max(1, totalReadingLiked)
@@ -146,7 +353,22 @@ public class Input
                     + (sportsLiked * 100) / Math.max(1, totalSportsLiked)
                     + " music:"
                     + (musicLiked * 100) / Math.max(1, totalMusicLiked));
+            System.out.println("compsci:"
+                    + (compsciLiked * 100) / Math.max(1, totalCompsciLiked)
+                    + " othereng:" + (otherengLiked * 100) / Math.max(1, totalOtherengLiked)
+                    + " mathcmda:"
+                    + (mathcmdaLiked * 100) / Math.max(1, totalMathcmdaLiked)
+                    + " other:"
+                    + (otherLiked * 100) / Math.max(1, totalOtherLiked));
+            System.out.println("northeast:"
+                    + (northeastLiked * 100) / Math.max(1, totalNortheastLiked)
+                    + " southeast:" + (southeastLiked * 100) / Math.max(1, totalSoutheastLiked)
+                    + " outofusus:"
+                    + (outofususLiked * 100) / Math.max(1, totalOutofususLiked)
+                    + " outofus:"
+                    + (outofusLiked * 100) / Math.max(1, totalOutofusLiked));
             System.out.println();
+            
         }
     }
 
